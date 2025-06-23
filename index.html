@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anish Sahoo - System & Web Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        font-family: "Inter", sans-serif;
+      }
+      .hero-gradient {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+          0 0 30px rgba(99, 102, 241, 0.3);
+      }
+      .glow-effect {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+      }
+      .skill-icon {
+        transition: all 0.3s ease;
+      }
+      .skill-icon:hover {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+      }
+      .typing-cursor::after {
+        content: "|";
+        animation: blink 1s infinite;
+      }
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+      .floating-icons {
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      .nav-link {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .terminal-box {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+      .terminal-header {
+        background: #2d2d2d;
+        padding: 8px 12px;
+        border-radius: 8px 8px 0 0;
+        border-bottom: 1px solid #333;
+      }
+      .terminal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 6px;
+      }
+      .bg-gradient-dark {
+        background: linear-gradient(
+          135deg,
+          #1a1a2e 0%,
+          #16213e 50%,
+          #0f3460 100%
+        );
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full top-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-gray-800"
+    >
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div
+            class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent"
+          >
+            Anish Sahoo
+          </div>
+          <div class="hidden lg:flex space-x-8">
+            <a href="#home" class="nav-link text-gray-300 hover:text-white"
+              >Home</a
+            >
+            <a href="#about" class="nav-link text-gray-300 hover:text-white"
+              >About</a
+            >
+            <a href="#projects" class="nav-link text-gray-300 hover:text-white"
+              >Projects</a
+            >
+            <a href="#skills" class="nav-link text-gray-300 hover:text-white"
+              >Skills</a
+            >
+            <a href="#contact" class="nav-link text-gray-300 hover:text-white"
+              >Contact</a
+            >
+          </div>
+          <button class="lg:hidden text-white" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="lg:hidden hidden bg-gray-800 border-t border-gray-700"
+      >
+        <div class="px-6 py-4 space-y-3">
+          <a href="#home" class="block text-gray-300 hover:text-white">Home</a>
+          <a href="#about" class="block text-gray-300 hover:text-white"
+            >About</a
+          >
+          <a href="#projects" class="block text-gray-300 hover:text-white"
+            >Projects</a
+          >
+          <a href="#skills" class="block text-gray-300 hover:text-white"
+            >Skills</a
+          >
+          <a href="#contact" class="block text-gray-300 hover:text-white"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="min-h-screen flex items-center justify-center relative bg-gradient-dark"
+    >
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="floating-icons absolute top-20 left-10 text-4xl text-indigo-400 opacity-20"
+        >
+          <i class="fab fa-linux"></i>
+        </div>
+        <div
+          class="floating-icons absolute top-40 right-16 text-3xl text-emerald-400 opacity-20"
+          style="animation-delay: -2s"
+        >
+          <i class="fab fa-java"></i>
+        </div>
+        <div
+          class="floating-icons absolute bottom-32 left-20 text-3xl text-purple-400 opacity-20"
+          style="animation-delay: -4s"
+        >
+          <i class="fas fa-code"></i>
+        </div>
+        <div
+          class="floating-icons absolute bottom-20 right-10 text-4xl text-indigo-400 opacity-20"
+          style="animation-delay: -1s"
+        >
+          <i class="fab fa-js-square"></i>
+        </div>
+      </div>
+      <div class="container mx-auto px-6 text-center z-10" data-aos="fade-up">
+        <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+          Hi, I'm
+          <span
+            class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+            >Anish Sahoo</span
+          >
+        </h1>
+        <p
+          class="text-xl lg:text-2xl text-gray-300 mb-8 typing-cursor"
+          id="typingText"
+        >
+          A System & Web Developer
+        </p>
+        <p class="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">
+          I build secure tools, efficient systems, and powerful UIs that solve
+          real-world problems.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+        >
+          <a
+            href="#projects"
+            class="bg-gradient-to-r from-indigo-500 to-purple-600 px-8 py-3 rounded-full text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 glow-effect"
+          >
+            View Projects
+          </a>
+          <a
+            href="#contact"
+            class="border-2 border-indigo-500 px-8 py-3 rounded-full text-indigo-400 font-semibold hover:bg-indigo-500 hover:text-white transition-all duration-300"
+          >
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-4">About Me</h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"
+          ></div>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="terminal-box" data-aos="fade-right">
+            <div class="terminal-header">
+              <span class="terminal-dot bg-red-500"></span>
+              <span class="terminal-dot bg-yellow-500"></span>
+              <span class="terminal-dot bg-green-500"></span>
+              <span class="text-gray-400 text-sm ml-2">~/about-me</span>
+            </div>
+            <div class="p-6 font-mono text-sm">
+              <div class="text-green-400">$ whoami</div>
+              <div class="text-gray-300 mb-2">anish@developer:~$</div>
+              <div class="text-green-400">$ cat profile.txt</div>
+              <div class="text-gray-300 mt-2">
+                Name: Anish Sahoo<br />
+                Role: System & Web Developer<br />
+                Passion: Building innovative solutions<br />
+                Specialty: Low-level systems + Modern web<br />
+                Current Project: Black Coffee OS<br />
+                Status: Always learning, always coding
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-left">
+            <p class="text-lg text-gray-300 mb-6">
+              I'm a passionate developer who bridges the gap between
+              system-level programming and modern web development. My journey
+              spans from crafting efficient C programs and Java applications to
+              building responsive web interfaces.
+            </p>
+            <p class="text-lg text-gray-300 mb-6">
+              Currently working on
+              <span class="text-indigo-400 font-semibold">Black Coffee OS</span
+              >, a custom operating system project that showcases my deep
+              understanding of system architecture and low-level programming.
+            </p>
+            <p class="text-lg text-gray-300">
+              When I'm not coding, you'll find me exploring Linux internals,
+              optimizing algorithms, or experimenting with the latest web
+              technologies. I believe in writing clean, efficient code that not
+              only works but makes a difference.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-900">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-4">Featured Projects</h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"
+          ></div>
+          <p class="text-gray-400 mt-4">
+            A collection of projects showcasing my diverse technical skills
+          </p>
+        </div>
+        <div
+          id="projectsContainer"
+          class="grid md:grid-cols-2 xl:grid-cols-3 gap-8"
+        >
+          <!-- Projects will be dynamically inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-800">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-4">Technical Skills</h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"
+          ></div>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-icon text-6xl text-indigo-400 mb-4">
+              <i class="fab fa-linux"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Languages</h3>
+            <p class="text-gray-400">C, Java, JavaScript, Python, Bash</p>
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-icon text-6xl text-emerald-400 mb-4">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Tools & Systems</h3>
+            <p class="text-gray-400">Linux, Git, Docker, Vim, GCC, Maven</p>
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-icon text-6xl text-purple-400 mb-4">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Frontend</h3>
+            <p class="text-gray-400">
+              HTML5, CSS3, Tailwind, JavaScript, React
+            </p>
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+            <div class="skill-icon text-6xl text-pink-400 mb-4">
+              <i class="fas fa-server"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Systems</h3>
+            <p class="text-gray-400">
+              OS Development, Network Programming, System Architecture
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-dark">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto"
+          ></div>
+          <p class="text-gray-400 mt-4">
+            Let's collaborate on something amazing
+          </p>
+        </div>
+        <div class="max-w-2xl mx-auto">
+          <div class="bg-gray-800 rounded-lg p-8 shadow-2xl" data-aos="fade-up">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-xl font-semibold mb-4">Contact Info</h3>
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <i class="fas fa-envelope text-indigo-400 mr-3"></i>
+                    <a
+                      href="mailto:anish.sahoo@email.com"
+                      class="text-gray-300 hover:text-white"
+                      >sahooanish@outlook.com</a
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fab fa-github text-indigo-400 mr-3"></i>
+                    <a
+                      href="https://github.com/anishsahoo"
+                      class="text-gray-300 hover:text-white"
+                      >github.com/anishsahoo</a
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fab fa-linkedin text-indigo-400 mr-3"></i>
+                    <a
+                      href="https://linkedin.com/in/anishsahoo"
+                      class="text-gray-300 hover:text-white"
+                      >linkedin.com/in/anishsahoo</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-4">Quick Message</h3>
+                <form>
+                  <div class="mb-4">
+                    <input
+                      type="email"
+                      placeholder="Your Email"
+                      class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-indigo-500 text-white"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <textarea
+                      placeholder="Your Message"
+                      rows="4"
+                      class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-indigo-500 text-white resize-none"
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-3 rounded-lg text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all duration-300"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 border-t border-gray-800">
+      <div class="container mx-auto px-6 text-center">
+        <p class="text-gray-400">
+          &copy; 2025 Anish Sahoo. All rights reserved.
+        </p>
+        <button
+          onclick="scrollToTop()"
+          class="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full transition-all duration-300"
+        >
+          <i class="fas fa-arrow-up"></i>
+        </button>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+      });
+
+      // Projects Data
+      const projects = [
+        {
+          title: "Black Coffee OS",
+          description:
+            "A hybrid Linux distribution combining the best features of Parrot OS and BlackArch for penetration testing and security research.",
+          technologies: [
+            "Linux",
+            "Shell Scripting",
+            "OS Development",
+            "Security Tools",
+          ],
+          github: "https://github.com/anishsahoo/black-coffee-os",
+          demo: null,
+          icon: "fab fa-linux",
+          color: "text-indigo-400",
+        },
+        {
+          title: "Currency Converter",
+          description:
+            "A robust currency conversion application built in C with real-time exchange rates and multiple currency support.",
+          technologies: [
+            "C",
+            "JSON Parsing",
+            "HTTP Requests",
+            "Data Structures",
+          ],
+          github: "https://github.com/anishsahoo/currency-converter",
+          demo: null,
+          icon: "fas fa-coins",
+          color: "text-emerald-400",
+        },
+        {
+          title: "Nmap Network Scanner",
+          description:
+            "Advanced network scanning tool with Java Swing GUI featuring port scanning, service detection, and vulnerability assessment.",
+          technologies: ["Java", "Swing", "Networking", "Security", "GUI"],
+          github: "https://github.com/anishsahoo/nmap-scanner",
+          demo: null,
+          icon: "fas fa-network-wired",
+          color: "text-purple-400",
+        },
+        {
+          title: "Hospital Management System",
+          description:
+            "Comprehensive hospital management application using advanced data structures for efficient patient record management.",
+          technologies: ["C", "Data Structures", "File I/O", "Algorithms"],
+          github: "https://github.com/anishsahoo/hospital-management-c",
+          demo: null,
+          icon: "fas fa-hospital",
+          color: "text-pink-400",
+        },
+        {
+          title: "ST Studio Gaming Portal",
+          description:
+            "Complete gaming portal website featuring game reviews, news, community features, and responsive design.",
+          technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
+          github: "https://github.com/anishsahoo/st-studio",
+          demo: "https://anishsahoo.github.io/st-studio",
+          icon: "fas fa-gamepad",
+          color: "text-indigo-400",
+        },
+      ];
+
+      // Render Projects
+      function renderProjects() {
+        const container = document.getElementById("projectsContainer");
+        container.innerHTML = "";
+
+        projects.forEach((project, index) => {
+          const projectCard = document.createElement("div");
+          projectCard.className = "bg-gray-800 rounded-lg p-6 card-hover";
+          projectCard.setAttribute("data-aos", "fade-up");
+          projectCard.setAttribute("data-aos-delay", (index * 100).toString());
+
+          projectCard.innerHTML = `
+                    <div class="flex items-center mb-4">
+                        <i class="${project.icon} text-2xl ${
+            project.color
+          } mr-3"></i>
+                        <h3 class="text-xl font-semibold">${project.title}</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">${project.description}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${project.technologies
+                          .map(
+                            (tech) =>
+                              `<span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">${tech}</span>`
+                          )
+                          .join("")}
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="${
+                          project.github
+                        }" target="_blank" rel="noopener noreferrer" class="flex items-center text-indigo-400 hover:text-indigo-300 transition-colors">
+                            <i class="fab fa-github mr-2"></i>
+                            GitHub
+                        </a>
+                        ${
+                          project.demo
+                            ? `<a href="${project.demo}" target="_blank" rel="noopener noreferrer" class="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Live Demo
+                            </a>`
+                            : ""
+                        }
+                    </div>
+                `;
+
+          container.appendChild(projectCard);
+        });
+      }
+
+      // Typing Animation
+      function typeText() {
+        const text = "A System & Web Developer";
+        const element = document.getElementById("typingText");
+        let index = 0;
+
+        element.textContent = "";
+
+        function type() {
+          if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+          }
+        }
+
+        type();
+      }
+
+      // Mobile Menu Toggle
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("hidden");
+      }
+
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+          // Close mobile menu if open
+          document.getElementById("mobileMenu").classList.add("hidden");
+        });
+      });
+
+      // Scroll to Top
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        renderProjects();
+        setTimeout(typeText, 1000);
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const nav = document.querySelector("nav");
+        if (window.scrollY > 50) {
+          nav.style.background = "rgba(17, 24, 39, 0.95)";
+        } else {
+          nav.style.background = "rgba(17, 24, 39, 0.9)";
+        }
+      });
+    </script>
+  </body>
+</html>
